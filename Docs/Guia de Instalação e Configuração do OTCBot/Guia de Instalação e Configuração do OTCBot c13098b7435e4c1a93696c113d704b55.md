@@ -27,34 +27,30 @@ Após o download, exporte os arquivos para uma pasta de sua escolha.
 
 ## **Passo 4: Selecionando o Cliente**
 
-Identifique o nome do OTClient que deseja utilizar. 
+Identifique a pasta do OTClient que deseja utilizar. 
 
-1. Clique com o botão direito no arquivo executável (exe) do OTClient. 
-2. Podemos ver que o do OT Pokemon é **otpdx**
-    
-    ![Untitled](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%203.png)
-    
+1. Renomeie o nome do cliente que você gostaria de usar para "otclient". (por exemplo: otpdx.exe -> otclient.exe)
+
+![Untitled](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%203.png)
+
+Caso haja algum bloquei, de mudança de nome, tente usar o nome original do client.
 
 ## **Passo 5: Iniciando o Cliente**
 
-Antes de prosseguir, é importante iniciar o OTClient desejado como administrador:
-
-1. Clique com o botão direito no arquivo executável (exe) do OTClient.
-2. Selecione a opção “Executar como administrador”.
+1. Execute o cliente desejado como administrador e espere até que ele carregue totalmente.
+2. Inicie o bot e aguarde alguns segundos, pois ele tende a travar o cliente ocasionalmente na inicialização.
     
-    ![Untitled.png](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%204.png)
+    ![Untitled](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%204.png)
     
 
-## **Passo 6: Configuração do Cliente**
+## **Considerações Finais**
 
-1. No OTCBot, insira o nome do OTClient que deseja usar com nosso bot.
-2. Selecione o cliente desejado na lista.
+1. Se no título da janela do bot você não conseguir ver o nome do seu personagem ou "Logged off", então a injeção de DLL falhou. Consulte a etapa um neste caso ou simplesmente tente novamente.
     
-    ![Untitled.png](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%205.png)
+    ![Untitled](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%205.png)
     
-
-## **Conclusão**
-
-O OTCBot está pronto para uso com o cliente selecionado.
+2. Se houver uma janela de erro com a mensagem "Falha na inicialização", tente novamente algumas vezes e, se não funcionar, informe o fórum na seção Relatório de bug, especificando o cliente que você tentou.
+3. Qualquer crash deverá ser reportado no fórum na seção Bug Reports, tópico criado exclusivamente para relatórios de crash.
+4. O bot deve funcionar com clientes OpenGL e DirectX, mas é melhor usar o cliente DirectX, se possível.
 
 ![Untitled](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%206.png)
