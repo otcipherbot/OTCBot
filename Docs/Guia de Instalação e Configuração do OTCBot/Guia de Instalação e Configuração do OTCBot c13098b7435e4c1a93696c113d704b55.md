@@ -29,7 +29,7 @@ Após o download, exporte os arquivos para uma pasta de sua escolha.
 
 Identifique a pasta do OTClient que deseja utilizar. 
 
-1. Renomeie o nome do cliente que você gostaria de usar para "otclient". (por exemplo: otpdx.exe -> otclient.exe)
+1. Renomeie o nome do cliente que você gostaria de usar para "otclient" para ter a Melhor experiência (Não é obrigatório). (por exemplo: otpdx.exe -> otclient.exe)
 
 ![Untitled](Guia%20de%20Instalac%CC%A7a%CC%83o%20e%20Configurac%CC%A7a%CC%83o%20do%20OTCBot%20c13098b7435e4c1a93696c113d704b55/Untitled%203.png)
 
