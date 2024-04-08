@@ -2,7 +2,7 @@
 
 ## **Introdução ao Targeting**
 
-O Targeting é uma ferramenta poderosa para automatizar a seleção de alvos e as ações do seu personagem em um jogo. Com o Targeting ativado, você pode configurar perfis personalizados para diferentes situações de caça e priorizar ações com base em uma variedade de critérios.
+O Targeting é uma ferramenta poderosa para automatizar a seleção de alvos e as ações do seu personagem. Com o Targeting ativado, você pode configurar perfis personalizados para diferentes situações de caça e priorizar ações com base em uma variedade de critérios.
 
 ## **Ativando o Targeting**
 
