@@ -11,7 +11,7 @@ Para começar a usar o Targeting, siga estes passos simples:
 1. **Acesse o Targeting**: Navegue até a seção de Targeting nas configurações do seu jogo.
 2. **Ative o Targeting**: Certifique-se de habilitar o Targeting para começar a configurar seus perfis e prioridades de ataque.
 
-![Untitled](Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled.png)
+![Untitled](https://raw.githubusercontent.com/otcipherbot/OTCBot/main/Docs/Targeting/Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled.png)
 
 ## **Criando Perfis de Targeting**
 
@@ -20,7 +20,7 @@ Os perfis de Targeting permitem salvar e gerenciar suas configurações para cad
 1. **Criação de Perfis**: Crie um novo perfil de Targeting para cada tipo de caça que você realizará.
 2. **Ativação de Perfis**: Escolha qual perfil deseja utilizar e ative-o para que suas configurações entrem em vigor.
 
-![Untitled](Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%201.png)
+![Untitled](https://raw.githubusercontent.com/otcipherbot/OTCBot/main/Docs/Targeting/Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%201.png)
 
 ## **Prioridades de Targeting**
 
@@ -43,11 +43,11 @@ Existem várias opções disponíveis para personalizar o comportamento do bot e
 
 Você pode especificar quais monstros o bot deve atacar adicionando-os a uma lista.
 
-![Untitled](Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%202.png)
+![Untitled](https://raw.githubusercontent.com/otcipherbot/OTCBot/main/Docs/Targeting/Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%202.png)
 
 ## **Editando Criaturas**
 
-![Untitled](Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%203.png)
+![Untitled](https://raw.githubusercontent.com/otcipherbot/OTCBot/main/Docs/Targeting/Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%203.png)
 
 **Name**: nome do monstro, tem quer respeitar as letras maiúsculas e minúsculas.
 
@@ -55,7 +55,7 @@ caso o monstros conter level no nome, ou alguma informação não fixa, você po
 
 O OtPokemon contém o nível do pokemon no nome:
 
-![Untitled](Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%204.png)
+![Untitled](https://raw.githubusercontent.com/otcipherbot/OTCBot/main/Docs/Targeting/Targeting%208a08eb8fbb0d4b7394deb3303275effc/Untitled%204.png)
 
 Para atacar o Bellsprout, invés de por Bellsprout [6] no name, você pode por Bellsprout*. Assim atacara qualquer Bellsprout, independente do nível.
 
