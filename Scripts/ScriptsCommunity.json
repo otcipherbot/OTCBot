@@ -37,5 +37,18 @@
     }
   ],
   "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "auto-run-1-Comunidade",
+  "title": "Auto Run",
+  "author": "Comunidade",
+  "description": "correr caso o personagem não estiver correndo",
+  "scripts": [
+    {
+      "name": "bugmap",
+      "code": "-- Verifica se o jogador esta online antes de continuar\nif not g_game.isOnline() then return end\n\n-- Comando para fazer o script repetir em x tempo\nauto(1000)\n\nlocal player = g_game.getLocalPlayer()\nlocal spellToCast = \"run\"\n\nif not player:hasState(PlayerStates.Haste) then\n    g_game.talk(spellToCast)\nend\n"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
 }
 ]
