@@ -63,5 +63,18 @@
     }
   ],
   "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "drop-item-Exemplo-1-Comunidade",
+  "title": "Drop Item",
+  "author": "Cipher",
+  "description": "Dropa os itens informados em baixo do seu personagem",
+  "scripts": [
+    {
+      "name": "drop item",
+      "code": "if not g_game.isOnline() then\n  return\nend\nlocal itemsToDrop = {5901, 3384} -- populate this table with items IDs you would like to drop\nlocal containers = g_game.getContainers()\nfor v, container in pairs(containers) do\n  if container:getItemsCount() >20 then\n    local containerItems = container:getItems()\n    for j, item in pairs(containerItems) do\n      for k, itemId in pairs(itemsToDrop) do\n        if item:getId() == itemId then\n          g_game.moveItem(item, g_game.getLocalPlayer():getPosition(), item:getCount())\n          return\n        end\n      end\n    end\n  end\nend\nauto(1000)"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
 }
 ]
