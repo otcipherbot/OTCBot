@@ -3,7 +3,7 @@
   "id": "Script-de-Exemplo-1-Comunidade",
   "title": "Pausa cave se achar um pokemon",
   "author": "Cipher",
-  "description": "Este é um script pausa cavebot se achar um pokemon que comece com horder, mas daria para ser usado com pokemons shinys ou qualquer outro",
+  "description": "Este é um script pausa cavebot se achar um pokemon que comece com horder, mas daria para ser usado com pokemons shinys ou qualquer outro, e toca um alerta",
   "scripts": [
     {
       "name": "FindHorder",
