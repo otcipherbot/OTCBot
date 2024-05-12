@@ -50,5 +50,18 @@
     }
   ],
   "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "open-door-1-Comunidade",
+  "title": "Open Door",
+  "author": "CIpher",
+  "description": "abre porta ao chegar perto. Interessante para usar junto com cavebot",
+  "scripts": [
+    {
+      "name": "opnedoor",
+      "code": "local closedDoorID = 1629 -- ID da porta\n\nlocal tiles = g_map.getTiles()\n\nfor _, tile in pairs(tiles) do\n    if tile:getPosition():getDistance(g_game.getLocalPlayer():getPosition()) <= 2 then\n\n        local items = tile:getItems()\n        for _, item in pairs(items) do\n            if item:getId() == closedDoorID then\n                g_game.useMapItem(item:getPosition())\n            end\n\n        end\n    end\nend"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
 }
 ]
