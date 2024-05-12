@@ -1,15 +1,15 @@
 [
-  {
-    "id": "Script-de-Exemplo-1-Comunidade",
-    "title": "Pausa cave se achar um pokemon",
-    "author": "Comunidade",
-    "description": "Este é um script pausa cavebot se achar um pokemon que comece com horder, mas daria para ser usado com pokemons shinys ou qualquer outro",
-    "scripts": [
-      {
-        "name": "FindHorder",
-        "code": "-- Verifica se o jogador está online antes de continuar\nif not g_game.isOnline() then return end\n\n--se o cave não tiver rodando, para o script\nif getOption(\"Cavebot/Enabled\") == \"false\"  then return end\n\n-- Comando para fazer o script repetir em x tempo\n\nauto(1000)\n\n\n\n-- Funcao para extrair o nome do Pokemon\nlocal function extractCreatureName(fullName)\n    local name = fullName:gsub(\" %[.*%]\", \"\") -- Remove tudo entre colchetes\n    name = name:gsub(\"%[.*%]\", \"\") -- Remove tudo entre colchetes sem espaco\n    return name:lower()\nend\n\n-- Função para verificar se um Pokémon com nome começando por \"horder\" está na tela\nlocal function isHorderPokemonOnScreen()\n    local screenCreatures = g_game.getCreatures()\n    for _, creature in pairs(screenCreatures) do\n        local creatureName = extractCreatureName(creature:getName())\n        if string.find(creatureName, \"^horder\") then\n            return true\n        end\n    end\n    return false\nend\n\n-- Função principal para o bot\nlocal function mainBotLoop()\n    while isHorderPokemonOnScreen() do\n            -- Desativar o bot se encontrarmos um Pokémon que começa com \"horder\"\n            setOption(\"Cavebot/Enabled\", \"false\")\n        sleep(1000) -- Espera 1 segundo antes de verificar novamente\n    end\n    setOption(\"Cavebot/Enabled\", \"true\")\n\nend\n\n-- Inicie o loop principal do bot\nmainBotLoop()"
-      }
-    ],
-    "tags": "exemplo,comunidade,teste"
-  }
+{
+  "id": "Script-de-Exemplo-1-Comunidade",
+  "title": "Pausa cave se achar um pokemon",
+  "author": "Cipher",
+  "description": "Este é um script pausa cavebot se achar um pokemon que comece com horder, mas daria para ser usado com pokemons shinys ou qualquer outro",
+  "scripts": [
+    {
+      "name": "FindHorder",
+      "code": "-- Verifica se o jogador esta online antes de continuar\nif not g_game.isOnline() then return end\n\n-- Comando para fazer o script repetir em x tempo\nauto(1000)\n\n-- Lista de prefixos de criaturas que queremos procurar\nlocal creaturePrefixes = { \"Shiny\", \"Horde\", \"Migrating\" }\nlocal playSoundEnabled = true\n\n-- Funcao para extrair o nome do Pokemon\nlocal function extractCreatureName(fullName)\n    local name = fullName:gsub(\" %[.*%]\", \"\") -- Remove tudo entre colchetes\n    name = name:gsub(\"%[.*%]\", \"\")            -- Remove tudo entre colchetes sem espaco\n    return name:lower()\nend\n\n-- Funcao para verificar se um Pokemon com um dos prefixos esta na tela\nlocal function isDesiredPokemonOnScreen()\n    local screenCreatures = g_game.getCreatures()\n    for _, creature in pairs(screenCreatures) do\n        local creatureName = extractCreatureName(creature:getName())\n        for _, prefix in ipairs(creaturePrefixes) do\n            if string.find(creatureName, \"^\" .. prefix:lower()) then\n                return true\n            end\n        end\n    end\n    return false\nend\n\n-- Funcao principal para o bot\nlocal function mainBotLoop()\n    local cavebotEnabled = getOption(\"Cavebot/Enabled\")\n    while isDesiredPokemonOnScreen() do\n        -- Desativar o bot se encontrarmos um Pokemon com um dos prefixos especificados\n        if cavebotEnabled == \"true\" then\n            setOption(\"Cavebot/Enabled\", \"false\")\n        end\n        -- Verificar se e para reproduzir o som\n        if playSoundEnabled then\n            playSound(\"alarm.wav\")\n        end\n\n        sleep(1000) -- Espera 1 segundo antes de verificar novamente\n    end\n    if cavebotEnabled == \"true\" then\n        setOption(\"Cavebot/Enabled\", \"true\")\n    end\nend\n\n-- Inicie o loop principal do bot\nmainBotLoop()\n"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+}
 ]
