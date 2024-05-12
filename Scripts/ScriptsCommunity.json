@@ -1,0 +1,15 @@
+[
+    {
+    "id": "Script-de-Exemplo-1-Comunidade",
+    "title": "Script de Exemplo 1",
+    "author": "Comunidade",
+    "description": "Este é um script de exemplo da comunidade.",
+    "scripts": [
+      {
+        "name": "helloWorld",
+        "code": "function helloWorld() {\n  console.log('Hello, world!');\n}"
+      }
+    ],
+    "tags": ["exemplo", "comunidade", "teste"]
+  }
+]
