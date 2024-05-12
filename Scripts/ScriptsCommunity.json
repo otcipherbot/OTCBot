@@ -11,5 +11,18 @@
     }
   ],
   "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "Auto -Pesca-1-Comunidade",
+  "title": "Auto Pesca",
+  "author": "Cipher Fan",
+  "description": "script para pesca automática no OtPokemon ",
+  "scripts": [
+    {
+      "name": "autofishing",
+      "code": "--[AUTO FISHING]\nlocal monsters = 4\nlocal distance = 4\nlocal fishingRodID = 3483\nlocal waterPosition = \"esquerda\"\n\nlocal player = g_game.getLocalPlayer()\nlocal position = player:getPosition()\nlocal offsetX, offsetY\n\nfunction letsFish()\n    position.x = position.x + offsetX\n    position.y = position.y + offsetY\n    g_game.useItemOnPosition(fishingRodID, position)\nend\n\nif #g_game.getMonstersAround(distance) <= monsters then\n    offsetX, offsetY = 0, 0\n\n    if waterPosition == \"baixo\" then\n        offsetY = 3\n    elseif waterPosition == \"cima\" then\n        offsetY = -3\n    elseif waterPosition == \"esquerda\" then\n        offsetX = -3\n    elseif waterPosition == \"direita\" then\n        offsetX = 3\n    end\n\n    letsFish()\nend\nauto(500)"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
 }
 ]
