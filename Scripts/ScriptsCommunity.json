@@ -24,5 +24,18 @@
     }
   ],
   "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "Bug-Map-1-Comunidade",
+  "title": "Bug Map",
+  "author": "Comunidade",
+  "description": "Teste do Bug Map",
+  "scripts": [
+    {
+      "name": "bugmap",
+      "code": "local speedMultiplier = 2  -- Multiplicador de velocidade, aumente para movimentar mais rápido\n\nlocal function moveFaster()\n    local player = g_game.getLocalPlayer()\n    if player then\n        local direction = player:getDirection()\n\n        -- Movimenta na direção do jogador com base no multiplicador de velocidade\n        if direction == Directions.North then\n            g_game.walk(Directions.North)\n        elseif direction == Directions.East then\n            g_game.walk(Directions.East)\n        elseif direction == Directions.South then\n            g_game.walk(Directions.South)\n        elseif direction == Directions.West then\n            g_game.walk(Directions.West)\n        end\n    end\nend\n\n-- Função para iniciar o movimento mais rápido\nlocal function startMovingFaster()\n    local totalTime = 5000 -- em milissegundos (cinco segundos)\n    local interval = 200 -- em milissegundos (0.2 segundo)\n    local endTime = os.time() + totalTime\n\n    repeat\n        moveFaster()\n        sleep(interval)\n    until os.time() >= endTime\n\n    print(\"Movimento rápido encerrado.\")\nend\n\n-- Inicia o movimento rápido\nstartMovingFaster()"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
 }
 ]
