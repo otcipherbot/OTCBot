@@ -1,15 +1,80 @@
 [
+{
+  "id": "Script-de-Exemplo-1-Comunidade",
+  "title": "Pausa cave se achar um pokemon",
+  "author": "Cipher",
+  "description": "Este é um script pausa cavebot se achar um pokemon que comece com horder, mas daria para ser usado com pokemons shinys ou qualquer outro, e toca um alerta",
+  "scripts": [
+    {
+      "name": "FindHorder",
+      "code": "-- Verifica se o jogador esta online antes de continuar\nif not g_game.isOnline() then return end\n\n-- Comando para fazer o script repetir em x tempo\nauto(1000)\n\n-- Lista de prefixos de criaturas que queremos procurar\nlocal creaturePrefixes = { \"Shiny\", \"Horde\", \"Migrating\" }\nlocal playSoundEnabled = true\n\n-- Funcao para extrair o nome do Pokemon\nlocal function extractCreatureName(fullName)\n    local name = fullName:gsub(\" %[.*%]\", \"\") -- Remove tudo entre colchetes\n    name = name:gsub(\"%[.*%]\", \"\")            -- Remove tudo entre colchetes sem espaco\n    return name:lower()\nend\n\n-- Funcao para verificar se um Pokemon com um dos prefixos esta na tela\nlocal function isDesiredPokemonOnScreen()\n    local screenCreatures = g_game.getCreatures()\n    for _, creature in pairs(screenCreatures) do\n        local creatureName = extractCreatureName(creature:getName())\n        for _, prefix in ipairs(creaturePrefixes) do\n            if string.find(creatureName, \"^\" .. prefix:lower()) then\n                return true\n            end\n        end\n    end\n    return false\nend\n\n-- Funcao principal para o bot\nlocal function mainBotLoop()\n    local cavebotEnabled = getOption(\"Cavebot/Enabled\")\n    while isDesiredPokemonOnScreen() do\n        -- Desativar o bot se encontrarmos um Pokemon com um dos prefixos especificados\n        if cavebotEnabled == \"true\" then\n            setOption(\"Cavebot/Enabled\", \"false\")\n        end\n        -- Verificar se e para reproduzir o som\n        if playSoundEnabled then\n            playSound(\"alarm.wav\")\n        end\n\n        sleep(1000) -- Espera 1 segundo antes de verificar novamente\n    end\n    if cavebotEnabled == \"true\" then\n        setOption(\"Cavebot/Enabled\", \"true\")\n    end\nend\n\n-- Inicie o loop principal do bot\nmainBotLoop()\n"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+},
   {
-    "id": "Script-de-Exemplo-1-Comunidade",
-    "title": "Pausa cave se achar um pokemon",
-    "author": "Comunidade",
-    "description": "Este é um script pausa cavebot se achar um pokemon que comece com horder, mas daria para ser usado com pokemons shinys ou qualquer outro",
-    "scripts": [
-      {
-        "name": "FindHorder",
-        "code": "-- Verifica se o jogador está online antes de continuar\nif not g_game.isOnline() then return end\n\n--se o cave não tiver rodando, para o script\nif getOption(\"Cavebot/Enabled\") == \"false\"  then return end\n\n-- Comando para fazer o script repetir em x tempo\n\nauto(1000)\n\n\n\n-- Funcao para extrair o nome do Pokemon\nlocal function extractCreatureName(fullName)\n    local name = fullName:gsub(\" %[.*%]\", \"\") -- Remove tudo entre colchetes\n    name = name:gsub(\"%[.*%]\", \"\") -- Remove tudo entre colchetes sem espaco\n    return name:lower()\nend\n\n-- Função para verificar se um Pokémon com nome começando por \"horder\" está na tela\nlocal function isHorderPokemonOnScreen()\n    local screenCreatures = g_game.getCreatures()\n    for _, creature in pairs(screenCreatures) do\n        local creatureName = extractCreatureName(creature:getName())\n        if string.find(creatureName, \"^horder\") then\n            return true\n        end\n    end\n    return false\nend\n\n-- Função principal para o bot\nlocal function mainBotLoop()\n    while isHorderPokemonOnScreen() do\n            -- Desativar o bot se encontrarmos um Pokémon que começa com \"horder\"\n            setOption(\"Cavebot/Enabled\", \"false\")\n        sleep(1000) -- Espera 1 segundo antes de verificar novamente\n    end\n    setOption(\"Cavebot/Enabled\", \"true\")\n\nend\n\n-- Inicie o loop principal do bot\nmainBotLoop()"
-      }
-    ],
-    "tags": "exemplo,comunidade,teste"
-  }
+  "id": "Auto -Pesca-1-Comunidade",
+  "title": "Auto Pesca",
+  "author": "Cipher Fan",
+  "description": "script para pesca automática no OtPokemon ",
+  "scripts": [
+    {
+      "name": "autofishing",
+      "code": "--[AUTO FISHING]\nlocal monsters = 4\nlocal distance = 4\nlocal fishingRodID = 3483\nlocal waterPosition = \"esquerda\"\n\nlocal player = g_game.getLocalPlayer()\nlocal position = player:getPosition()\nlocal offsetX, offsetY\n\nfunction letsFish()\n    position.x = position.x + offsetX\n    position.y = position.y + offsetY\n    g_game.useItemOnPosition(fishingRodID, position)\nend\n\nif #g_game.getMonstersAround(distance) <= monsters then\n    offsetX, offsetY = 0, 0\n\n    if waterPosition == \"baixo\" then\n        offsetY = 3\n    elseif waterPosition == \"cima\" then\n        offsetY = -3\n    elseif waterPosition == \"esquerda\" then\n        offsetX = -3\n    elseif waterPosition == \"direita\" then\n        offsetX = 3\n    end\n\n    letsFish()\nend\nauto(500)"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "Bug-Map-1-Comunidade",
+  "title": "Bug Map",
+  "author": "Comunidade",
+  "description": "Teste do Bug Map",
+  "scripts": [
+    {
+      "name": "bugmap",
+      "code": "local speedMultiplier = 2  -- Multiplicador de velocidade, aumente para movimentar mais rápido\n\nlocal function moveFaster()\n    local player = g_game.getLocalPlayer()\n    if player then\n        local direction = player:getDirection()\n\n        -- Movimenta na direção do jogador com base no multiplicador de velocidade\n        if direction == Directions.North then\n            g_game.walk(Directions.North)\n        elseif direction == Directions.East then\n            g_game.walk(Directions.East)\n        elseif direction == Directions.South then\n            g_game.walk(Directions.South)\n        elseif direction == Directions.West then\n            g_game.walk(Directions.West)\n        end\n    end\nend\n\n-- Função para iniciar o movimento mais rápido\nlocal function startMovingFaster()\n    local totalTime = 5000 -- em milissegundos (cinco segundos)\n    local interval = 200 -- em milissegundos (0.2 segundo)\n    local endTime = os.time() + totalTime\n\n    repeat\n        moveFaster()\n        sleep(interval)\n    until os.time() >= endTime\n\n    print(\"Movimento rápido encerrado.\")\nend\n\n-- Inicia o movimento rápido\nstartMovingFaster()"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "auto-run-1-Comunidade",
+  "title": "Auto Run",
+  "author": "Comunidade",
+  "description": "correr caso o personagem não estiver correndo",
+  "scripts": [
+    {
+      "name": "bugmap",
+      "code": "-- Verifica se o jogador esta online antes de continuar\nif not g_game.isOnline() then return end\n\n-- Comando para fazer o script repetir em x tempo\nauto(1000)\n\nlocal player = g_game.getLocalPlayer()\nlocal spellToCast = \"run\"\n\nif not player:hasState(PlayerStates.Haste) then\n    g_game.talk(spellToCast)\nend\n"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "open-door-1-Comunidade",
+  "title": "Open Door",
+  "author": "CIpher",
+  "description": "abre porta ao chegar perto. Interessante para usar junto com cavebot",
+  "scripts": [
+    {
+      "name": "opnedoor",
+      "code": "local closedDoorID = 1629 -- ID da porta\n\nlocal tiles = g_map.getTiles()\n\nfor _, tile in pairs(tiles) do\n    if tile:getPosition():getDistance(g_game.getLocalPlayer():getPosition()) <= 2 then\n\n        local items = tile:getItems()\n        for _, item in pairs(items) do\n            if item:getId() == closedDoorID then\n                g_game.useMapItem(item:getPosition())\n            end\n\n        end\n    end\nend"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "drop-item-Exemplo-1-Comunidade",
+  "title": "Drop Item",
+  "author": "Cipher",
+  "description": "Dropa os itens informados em baixo do seu personagem",
+  "scripts": [
+    {
+      "name": "drop item",
+      "code": "if not g_game.isOnline() then\n  return\nend\nlocal itemsToDrop = {5901, 3384} -- populate this table with items IDs you would like to drop\nlocal containers = g_game.getContainers()\nfor v, container in pairs(containers) do\n  if container:getItemsCount() >20 then\n    local containerItems = container:getItems()\n    for j, item in pairs(containerItems) do\n      for k, itemId in pairs(itemsToDrop) do\n        if item:getId() == itemId then\n          g_game.moveItem(item, g_game.getLocalPlayer():getPosition(), item:getCount())\n          return\n        end\n      end\n    end\n  end\nend\nauto(1000)"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+}
 ]
