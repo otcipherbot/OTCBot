@@ -76,5 +76,44 @@
     }
   ],
   "tags": "exemplo,comunidade,teste"
+},
+{
+  "id": "Switch PokeFrenzy e PokemonBr",
+  "title": "Switch PokeFrenzy e PokemonBr",
+  "author": "Cipher",
+  "description": "troca de pokemon independente da bag",
+  "scripts": [
+    {
+      "name": "switch",
+      "code": "-- Verifica se o jogador está online antes de continuar\nif not g_game.isOnline() then return end\nauto(100)\n\nlocal targetPositionBall = Position(65535, 8, 0)\nlocal pokeballContainerName = \"pokemon trainer backpack\"\n\nlocal pokeballIDsFechadas = { 12466, 12151 }  -- Adicione aqui os IDs das Pokébolas fechadas\nlocal pokeballIDsAbertas = { 12150, 12465 }\n\nlocal switchDelay = 2000 -- Tempo para trocar para o próximo Pokémon\nlocal moveDelay = 400    -- Tempo de correção para trocar para o próximo Pokémon\n\nlocal player = g_game.getLocalPlayer()\n\nlocal function performWithRetry(actionFunction, maxAttempts)\nlocal maxAttempts = 5  \n\n    local attempts = 0\n    local success = false\n    repeat\n        g_game.stop()\n        success = actionFunction()\n        attempts = attempts + 1\n        if not success then\n            sleep(100) -- Aguarda um curto período antes de tentar novamente\n        end\n    until success or attempts >= maxAttempts\n    attempts = 0 -- Reinicia o número de tentativas se a ação for bem-sucedida\nend\n\nlocal function checkAndOpenPokeball()\n    local function action()\n        local item = player:getInventoryItem(targetPositionBall.y)\n        if item then\n            local pitemID = item:getId()\n            if not table.find(pokeballIDsAbertas, pitemID) then\n                g_game.useItem(item)\n                return false\n            end\n            return true\n        end\n        return false\n    end\n    performWithRetry(action, maxAttempts)\nend\n\nlocal function checkAndClosePokeball()\n    local function action()\n        local item = player:getInventoryItem(targetPositionBall.y)\n        if item and table.find(pokeballIDsAbertas, item:getId()) then\n            g_game.useItem(item)\n            return false\n        end\n        return true\n    end\n    performWithRetry(action, maxAttempts)\nend\n\nlocal function movePokeballToContainer()\n    local containers = g_game.getContainers()\n    for _, container in pairs(containers) do\n        if container:getName() == pokeballContainerName then\n            local containerItems = container:getItems()\n            if not containerItems or #containerItems == 0 then\n                print(\"Nenhuma pokebola encontrada no recipiente.\")\n                return\n            else\n                for i = #containerItems, 1, -1 do\n                    local item = containerItems[i]\n                    if table.find(pokeballIDsFechadas, item:getId()) then\n                        checkAndClosePokeball()\n                        sleep(moveDelay)\n                        g_game.moveItem(item, targetPositionBall, item:getCount())\n                        sleep(moveDelay)\n                        checkAndOpenPokeball()\n                        sleep(switchDelay)\n                        return\n                    end\n                end\n                print(\"Nenhuma pokebola fechada encontrada no recipiente.\")\n            end\n        end\n    end\n    print(\"Recipiente de pokebolas não encontrado.\")\nend\n\n-- Verifica se o jogador está atacando e executa a troca de Pokémon\nif g_game.isAttacking() then\n    movePokeballToContainer()\nend"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "Switch PokCP e PokeMomories",
+  "title": "Switch PokCP e PokeMomories",
+  "author": "Cipher",
+  "description": "troca de pokemon com os comandos do Jogo",
+  "scripts": [
+    {
+      "name": "switch",
+      "code": "require \"luascripts\\\\global\"\n\nif not g_game.isOnline() then return end\nauto(300)\n\nlocal countPokes = 6 -- quantos pokemons você tem\nlocal switchDelay = 2000 -- Atraso em milissegundos apos a troca de pokemon\nlocal monsterDistance = 2 -- distancia do monstro, para poder realizar a troca\n\n-- Verifica se o jogador est? atacando e executa a fun??o de troca de pok?mon\nif g_game.isAttacking() then\n    if(stopSwitch) then\n        if #g_game.getMonstersAround(monsterDistance) >= 0 then\n            g_game.talk('!@pokebar@ '..countPokes)\n            sleep(switchDelay)\n        end\n    end\n   \nend\n"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "Switch Generico",
+  "title": "Switch Generico",
+  "author": "Cipher",
+  "description": "troca de pokemon",
+  "scripts": [
+    {
+      "name": "switch",
+      "code": "-- Verifica se o jogador est? online antes de continuar\nif not g_game.isOnline() then return end\nauto(100)\n\nlocal targetPositionBall = Position(65535, 8, 0)\nlocal pokeballContainerName = \"Pokeball Bag\"\n--local pokeballIDsAbertas = { 7870, 7868 }\nlocal pokeballIDsAbertas = { 3437, 3576, 3471 }\n\nlocal switchDelay = 2000 -- tempo para trocar para o pr?ximo pok?mon\nlocal moveDelay = 400    -- tempo de corre??o para trocar para o pr?ximo pok?mon\n\nlocal player = g_game.getLocalPlayer()\n\nlocal function performWithRetry(actionFunction, maxAttempts)\n    local maxAttempts = 5  \n\n    local attempts = 0\n    local success = false\n    repeat\n        g_game.stop()\n        success = actionFunction()\n        attempts = attempts + 1\n        if not success then\n            sleep(100) -- Aguarda um curto per?odo antes de tentar novamente\n        end\n    until success and attempts <= maxAttempts\n     attempts = 0 -- Reinicia o n?mero de tentativas se a a??o for bem-sucedida\nend\n\nlocal function checkAndOpenPokeball()\n    local function action()\n        local item = player:getInventoryItem(targetPositionBall.y)\n        if item then\n            local pitemID = item:getId()\n            if not table.find(pokeballIDsAbertas, pitemID) then\n                g_game.useItem(item)\n                return false\n            end\n            return true\n        end\n    end\n    performWithRetry(action)\nend\n\nlocal function checkAndClosePokeball()\n    local function action()\n        local item = player:getInventoryItem(targetPositionBall.y)\n        if item and table.find(pokeballIDsAbertas, item:getId()) then\n            g_game.useItem(item)\n           return false\n        end\n        return true\n    end\n    performWithRetry(action)\nend\n\n\nlocal function movePokeballToContainer()\n    local containers = g_game.getContainers()\n    for _, container in pairs(containers) do\n        if container:getName() == pokeballContainerName then\n            local containerItems = container:getItems()\n            if not containerItems or #containerItems == 0 then\n                print(\"Nenhuma pokebola encontrada no recipiente.\")\n                return\n            else\n                local item = containerItems[#containerItems] -- Seleciona sempre o ?ltimo item\n                checkAndClosePokeball()\n                sleep(moveDelay)\n                g_game.moveItem(item, targetPositionBall, item:getCount())\n                --print(\"Movendo pokebola para o jogador...\")\n                sleep(moveDelay)\n                checkAndOpenPokeball()\n                --print(\"Pokebola movida e aberta com sucesso.\")\n                sleep(switchDelay)\n                return\n            end\n        end\n    end\n    print(\"Recipiente de pokebolas n?o encontrado.\")\nend\n\n-- Verifica se o jogador est? atacando e executa a troca de pok?mon\nif not g_game.isAttacking() then\nelse\n    movePokeballToContainer()\nend\n"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
 }
 ]
