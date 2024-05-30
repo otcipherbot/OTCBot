@@ -115,5 +115,18 @@
     }
   ],
   "tags": "exemplo,comunidade,teste"
+},
+  {
+  "id": "Script-de-Exemplo-1-Comunidade",
+  "title": "Reviver Pokemon dentro de um container especifico",
+  "author": "Cipher",
+  "description": "Este é um script Reviver Pokemon em Pokebolas dentro de um container especifico",
+  "scripts": [
+    {
+      "name": "FindHorder",
+      "code": "--[[\n    Tutorial: Reviver Pokemon em Pokebolas dentro de um container especifico\n\n    Este script verifica se um container especifico contem Pokebolas com Pokemon mortos\n    e, se encontrado, usa um item de reviver (reviveId) na posicao dessas Pokebolas.\n\n    1. Defina os IDs das Pokebolas que voce esta procurando (pokeballsId).\n    2. Defina o ID do item de reviver (reviveId).\n    3. Defina o nome do container que sera verificado (pokeballContainerName).\n    4. Funcao auxiliar para verificar se um valor esta em uma tabela.\n    5. Loop principal para percorrer todos os containers e realizar as acoes necessarias.\n]]\n\n-- Defina os IDs das Pokebolas que voce esta procurando\nlocal pokeballsId = { 3351 }\n\n-- Defina o ID do item de reviver\nlocal reviveId = 6553\n\n-- Defina o nome do container que sera verificado\nlocal pokeballContainerName = \"PokeBag\"\n\n-- Funcao auxiliar para verificar se um valor esta na tabela\n-- Esta funcao percorre todos os elementos da tabela 'tbl' e retorna true se encontrar o 'value'\nlocal function isInTable(value, tbl)\n    for _, v in ipairs(tbl) do\n        if v == value then\n            return true\n        end\n    end\n    return false\nend\n\n-- Obtenha todos os containers do jogo\nlocal containers = g_game.getContainers()\n\n-- Percorra todos os containers\nfor _, container in pairs(containers) do\n    -- Verifique se o nome do container e igual ao 'pokeballContainerName'\n    if container:getName() == pokeballContainerName then\n        -- Obtenha todos os itens do container\n        local items = container:getItems()\n        \n        -- Percorra todos os itens do container\n        for _, item in pairs(items) do\n            -- Verifique se o ID do item esta na tabela 'pokeballsId' usando a funcao 'isInTable'\n            if isInTable(item:getId(), pokeballsId) then\n                -- Se o ID do item estiver na tabela, imprima \"true\" (para depuracao)\n                print(\"true\")\n                \n                -- Use o item 'reviveId' na posicao do item encontrado\n                g_game.useInventoryItemOnPosition(reviveId, item:getPosition())\n            end\n        end\n    end\nend\n"
+    }
+  ],
+  "tags": "exemplo,comunidade,teste"
 }
 ]
